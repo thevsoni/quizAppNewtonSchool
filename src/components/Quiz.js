@@ -31,16 +31,19 @@ function Quiz() {
             setCurrentQuestion(currentQuestion + 1);
             setClickedOption(0);
         } else {
+            console.log(totalScore)
             setTotalScore((old) => ({
                 ...old,
                 [formData?.questionType]: {
                     maxScore: totalScore[formData?.questionType].maxScore + 4,
-                    scored: totalScore[formData?.questionType].scored + score,
+                    scored: totalScore[formData?.questionType].scored + score + (clickedOption === QuizData[currentQuestion].answer ? 1 : 0),
                 }
             }))
+            console.log(totalScore)
             setShowResult(true)
         }
     }
+    console.log(totalScore)
     const updateScore = () => {
         if (clickedOption === QuizData[currentQuestion].answer) {
             setScore(score + 1);
@@ -65,6 +68,7 @@ function Quiz() {
             <div className='overAllResult'
                 style={{ borderRadius: "10px", background: dark ? "#6100ed" : "white", border: dark ? "2px solid #6100ed" : "2px solid whitesmoke" }}
             >
+                <span style={{ borderBottom: "1px solid brown", marginBottom: "5px", padding: "2px" }}>Over All Result:</span>
                 <div>Java:{`${totalScore?.java?.scored}/${totalScore?.java?.maxScore}`}</div>
                 <div>JavaScript:{`${totalScore?.javaScript?.scored}/${totalScore?.javaScript?.maxScore}`}</div>
                 <div>React:{`${totalScore?.react?.scored}/${totalScore?.react?.maxScore}`}</div>
