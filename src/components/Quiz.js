@@ -13,6 +13,17 @@ function Quiz() {
         questionType: ""
     })
     const [dark, setDark] = useState(false);
+    const [totalScore, setTotalScore] = useState({
+        java: {
+            maxScore: 0, scored: 0
+        },
+        javaScript: {
+            maxScore: 0, scored: 0
+        },
+        react: {
+            maxScore: 0, scored: 0
+        },
+    })
 
     const changeQuestion = () => {
         updateScore();
@@ -44,6 +55,13 @@ function Quiz() {
     const QuizData = formData?.questionType === "java" ? QuizDataJava : formData?.questionType === "javaScript" ? QuizDataJavaScript : QuizDataReact
     return (
         <div className='topParent' style={{ background: dark ? "#292929" : "white" }}>
+            <div className='overAllResult'
+                style={{ borderRadius: "10px", background: dark ? "#6100ed" : "white", border: dark ? "2px solid #6100ed" : "2px solid whitesmoke" }}
+            >
+                <div>Java:{`${totalScore?.java?.scored}/${totalScore?.java?.maxScore}`}</div>
+                <div>JavaScript:{`${totalScore?.javaScript?.scored}/${totalScore?.javaScript?.maxScore}`}</div>
+                <div>React:{`${totalScore?.react?.scored}/${totalScore?.react?.maxScore}`}</div>
+            </div>
             <div className='toggleParent'>
                 <button className='btnLight' onClick={() => { setDark(false) }}>light</button>
                 <button className='btnDark' onClick={() => { setDark(true) }}>Dark</button>
@@ -111,7 +129,7 @@ function Quiz() {
                         </>
                         :
                         showResult ? (
-                            <QuizResult name={formData?.name} score={score} totalScore={QuizData.length} setScore={setScore} tryAgain={resetAll} setIsGameStarted={setIsGameStarted} setCurrentQuestion={setCurrentQuestion} setShowResult={setShowResult} />
+                            <QuizResult totalScored={totalScore} setTotalScore={setTotalScore} name={formData?.name} questionType={formData?.questionType} score={score} totalScore={QuizData.length} setScore={setScore} tryAgain={resetAll} setIsGameStarted={setIsGameStarted} setCurrentQuestion={setCurrentQuestion} setShowResult={setShowResult} />
                         ) : (
                             <>
                                 <div className="question">

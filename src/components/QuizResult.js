@@ -1,6 +1,14 @@
 import React from 'react'
 
 function QuizResult(props) {
+    const { totalScored, questionType } = props
+    // props.setTotalScore((old) => ({
+    //     ...old,
+    //     [questionType]: {
+    //         maxScore: totalScored[questionType]?.maxScore + 4,
+    //         scored: totalScored[questionType]?.scored + props.totalScore
+    //     }
+    // }))
     return (
         <>
             <h1 style={{ marginTop: "50px" }}>Hi, {props?.name}</h1>
