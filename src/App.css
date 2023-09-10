@@ -143,11 +143,15 @@ input{
   background-color: white;
 }
 
+
 .checked{
+  border: 1px solid blue;
   /* background-color: rgb(179, 83, 179); */
   background-color: rgb(179, 83, 179);
   color:white;
-  box-shadow: 3px 3px 4px 1px rgb(78, 69, 78);
+  /* box-shadow: 3px 3px 4px 1px rgb(78, 69, 78); */
+  box-shadow: 5px 5px 4px 1px rgb(78, 69, 78);
+  filter: brightness(110%);
 }
 .option-btn:hover{
   /* background-color: rgb(212, 118, 212); */
