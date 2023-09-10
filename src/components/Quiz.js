@@ -31,7 +31,7 @@ function Quiz() {
             setCurrentQuestion(currentQuestion + 1);
             setClickedOption(0);
         } else {
-            console.log(totalScore)
+            // console.log(totalScore)
             setTotalScore((old) => ({
                 ...old,
                 [formData?.questionType]: {
@@ -39,11 +39,11 @@ function Quiz() {
                     scored: totalScore[formData?.questionType].scored + score + (clickedOption === QuizData[currentQuestion].answer ? 1 : 0),
                 }
             }))
-            console.log(totalScore)
+            // console.log(totalScore)
             setShowResult(true)
         }
     }
-    console.log(totalScore)
+    // console.log(totalScore)
     const updateScore = () => {
         if (clickedOption === QuizData[currentQuestion].answer) {
             setScore(score + 1);
