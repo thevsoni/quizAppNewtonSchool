@@ -31,6 +31,13 @@ function Quiz() {
             setCurrentQuestion(currentQuestion + 1);
             setClickedOption(0);
         } else {
+            setTotalScore((old) => ({
+                ...old,
+                [formData?.questionType]: {
+                    maxScore: totalScore[formData?.questionType].maxScore + 4,
+                    scored: totalScore[formData?.questionType].scored + score,
+                }
+            }))
             setShowResult(true)
         }
     }
